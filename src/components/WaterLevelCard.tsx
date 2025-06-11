@@ -18,9 +18,9 @@ export const WaterLevelCard = ({ waterLevel }: WaterLevelCardProps) => {
   }, [waterLevel]);
 
   const getStatusColor = (level: number) => {
-    if (level >= 70) return 'text-primary';
-    if (level >= 30) return 'text-slate-400';
-    return 'text-slate-500';
+    if (level >= 70) return 'text-success-600';
+    if (level >= 30) return 'text-warning-600';
+    return 'text-error-600';
   };
 
   const getStatusText = (level: number) => {
@@ -45,7 +45,7 @@ export const WaterLevelCard = ({ waterLevel }: WaterLevelCardProps) => {
                   stroke="currentColor"
                   strokeWidth="8"
                   fill="transparent"
-                  className="text-slate-700"
+                  className="text-gray-200 dark:text-gray-700"
                 />
                 {/* Progress circle */}
                 <circle
@@ -62,16 +62,16 @@ export const WaterLevelCard = ({ waterLevel }: WaterLevelCardProps) => {
                 />
                 <defs>
                   <linearGradient id="waterGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" className="stop-color-sky-400" />
-                    <stop offset="50%" className="stop-color-primary" />
-                    <stop offset="100%" className="stop-color-blue-600" />
+                    <stop offset="0%" className="stop-color-water-400" />
+                    <stop offset="50%" className="stop-color-water-500" />
+                    <stop offset="100%" className="stop-color-water-600" />
                   </linearGradient>
                 </defs>
               </svg>
               
               {/* Center content */}
               <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <div className="text-4xl font-bold text-primary mb-1">
+                <div className="text-4xl font-bold text-water-600 dark:text-water-400 mb-1">
                   {animatedLevel.toFixed(1)}%
                 </div>
                 <div className="text-sm text-muted-foreground">Water Level</div>
@@ -99,7 +99,7 @@ export const WaterLevelCard = ({ waterLevel }: WaterLevelCardProps) => {
               </div>
               <div className="space-y-2">
                 <p className="text-sm text-muted-foreground">Current Volume</p>
-                <p className="text-xl font-semibold text-primary">
+                <p className="text-xl font-semibold text-water-600">
                   {Math.round((waterLevel / 100) * 5000).toLocaleString()}L
                 </p>
               </div>
@@ -113,7 +113,7 @@ export const WaterLevelCard = ({ waterLevel }: WaterLevelCardProps) => {
               </div>
               <Progress 
                 value={animatedLevel} 
-                className="h-3 bg-slate-700"
+                className="h-3 bg-gray-200 dark:bg-gray-700"
               />
             </div>
           </div>
@@ -122,3 +122,4 @@ export const WaterLevelCard = ({ waterLevel }: WaterLevelCardProps) => {
     </Card>
   );
 };
+

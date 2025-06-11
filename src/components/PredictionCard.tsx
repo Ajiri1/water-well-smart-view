@@ -31,11 +31,11 @@ export const PredictionCard = ({ waterLevel }: PredictionCardProps) => {
       return (
         <div className="glass-card p-3 border border-white/20">
           <p className="font-medium">{label}</p>
-          <p className="text-primary">
+          <p className="text-water-600">
             Predicted: {payload[0].value.toFixed(1)}%
           </p>
           {payload[1] && (
-            <p className="text-slate-400">
+            <p className="text-success-600">
               Optimal: {payload[1].value.toFixed(1)}%
             </p>
           )}
@@ -60,7 +60,7 @@ export const PredictionCard = ({ waterLevel }: PredictionCardProps) => {
               <span className="text-2xl">⏱️</span>
               <div>
                 <p className="font-medium">Days Until Empty</p>
-                <p className={`text-2xl font-bold ${refillRecommended ? 'text-slate-400' : 'text-primary'}`}>
+                <p className={`text-2xl font-bold ${refillRecommended ? 'text-warning-600' : 'text-success-600'}`}>
                   {daysUntilEmpty}
                 </p>
                 <p className="text-xs text-muted-foreground">At current usage rate</p>
@@ -73,7 +73,7 @@ export const PredictionCard = ({ waterLevel }: PredictionCardProps) => {
               <span className="text-2xl">📈</span>
               <div>
                 <p className="font-medium">Usage Trend</p>
-                <p className="text-2xl font-bold text-primary">+5%</p>
+                <p className="text-2xl font-bold text-water-600">+5%</p>
                 <p className="text-xs text-muted-foreground">Increase this week</p>
               </div>
             </div>
@@ -94,8 +94,8 @@ export const PredictionCard = ({ waterLevel }: PredictionCardProps) => {
                   type="monotone"
                   dataKey="optimal"
                   stackId="1"
-                  stroke="#64748b"
-                  fill="#64748b"
+                  stroke="#22c55e"
+                  fill="#22c55e"
                   fillOpacity={0.1}
                   strokeDasharray="5 5"
                 />
@@ -103,15 +103,15 @@ export const PredictionCard = ({ waterLevel }: PredictionCardProps) => {
                   type="monotone"
                   dataKey="predicted"
                   stackId="2"
-                  stroke="#38bdf8"
+                  stroke="#0ea5e9"
                   fill="url(#waterGradient)"
                   fillOpacity={0.3}
                   strokeWidth={3}
                 />
                 <defs>
                   <linearGradient id="waterGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#38bdf8" stopOpacity={0.8} />
-                    <stop offset="100%" stopColor="#38bdf8" stopOpacity={0.1} />
+                    <stop offset="0%" stopColor="#0ea5e9" stopOpacity={0.8} />
+                    <stop offset="100%" stopColor="#0ea5e9" stopOpacity={0.1} />
                   </linearGradient>
                 </defs>
               </AreaChart>
@@ -126,30 +126,30 @@ export const PredictionCard = ({ waterLevel }: PredictionCardProps) => {
           </h4>
           
           {refillRecommended && (
-            <div className="p-3 rounded-lg bg-slate-800/50 border border-slate-600">
-              <p className="text-sm font-medium text-slate-300">
+            <div className="p-3 rounded-lg bg-gradient-to-r from-warning-50 to-orange-50 dark:from-warning-900/20 dark:to-orange-900/20 border border-warning-200/50 dark:border-warning-800/50">
+              <p className="text-sm font-medium text-warning-700 dark:text-warning-300">
                 ⚠️ Refill Recommended
               </p>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-warning-600 dark:text-warning-400 mt-1">
                 Schedule a refill within the next 2 days to avoid running low.
               </p>
             </div>
           )}
 
-          <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
-            <p className="text-sm font-medium text-primary">
+          <div className="p-3 rounded-lg bg-gradient-to-r from-water-50 to-blue-50 dark:from-water-900/20 dark:to-blue-900/20 border border-water-200/50 dark:border-water-800/50">
+            <p className="text-sm font-medium text-water-700 dark:text-water-300">
               💡 Optimize Usage
             </p>
-            <p className="text-xs text-primary/80 mt-1">
+            <p className="text-xs text-water-600 dark:text-water-400 mt-1">
               Peak usage detected between 7-9 AM. Consider redistributing activities.
             </p>
           </div>
 
-          <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
-            <p className="text-sm font-medium text-primary">
+          <div className="p-3 rounded-lg bg-gradient-to-r from-success-50 to-green-50 dark:from-success-900/20 dark:to-green-900/20 border border-success-200/50 dark:border-success-800/50">
+            <p className="text-sm font-medium text-success-700 dark:text-success-300">
               ✨ Smart Insight
             </p>
-            <p className="text-xs text-primary/80 mt-1">
+            <p className="text-xs text-success-600 dark:text-success-400 mt-1">
               Your usage pattern suggests optimal refill timing is every 8-9 days.
             </p>
           </div>
@@ -158,3 +158,4 @@ export const PredictionCard = ({ waterLevel }: PredictionCardProps) => {
     </Card>
   );
 };
+

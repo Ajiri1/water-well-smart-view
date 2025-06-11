@@ -28,7 +28,7 @@
     --accent: 51 65 85;
     --accent-foreground: 226 232 240;
 
-    --destructive: 239 68 68;
+    --destructive: 220 38 38;
     --destructive-foreground: 248 250 252;
 
     --border: 51 65 85;
@@ -68,10 +68,18 @@
   }
   
   .water-gradient {
-    @apply bg-gradient-to-br from-primary via-sky-500 to-blue-600;
+    @apply bg-gradient-to-br from-water-400 via-water-500 to-water-600;
   }
   
-  .neutral-gradient {
-    @apply bg-gradient-to-br from-slate-600 via-slate-700 to-slate-800;
+  .success-gradient {
+    @apply bg-gradient-to-br from-success-400 via-success-500 to-success-600;
+  }
+  
+  .warning-gradient {
+    @apply bg-gradient-to-br from-warning-400 via-warning-500 to-warning-600;
+  }
+  
+  .error-gradient {
+    @apply bg-gradient-to-br from-error-400 via-error-500 to-error-600;
   }
 }
