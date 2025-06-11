@@ -60,15 +60,15 @@ export const EcoInsightsCard = () => {
                   <p className="text-xs text-muted-foreground">{insight.description}</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-lg font-bold text-success-600">{insight.value}</p>
-                  <span className="text-xs text-success-500">
+                  <p className="text-lg font-bold text-primary">{insight.value}</p>
+                  <span className="text-xs text-primary/70">
                     {insight.trend === 'up' ? '↗️' : '↘️'}
                   </span>
                 </div>
               </div>
               <Progress 
                 value={insight.progress} 
-                className="h-2 bg-gray-200 dark:bg-gray-700"
+                className="h-2 bg-slate-700"
               />
             </div>
           ))}
@@ -83,22 +83,22 @@ export const EcoInsightsCard = () => {
             {tips.slice(0, 2).map((tip, index) => (
               <div 
                 key={index}
-                className="p-3 rounded-lg bg-gradient-to-r from-water-50 to-success-50 dark:from-water-900/20 dark:to-success-900/20 border border-water-200/50 dark:border-water-800/50 animate-fade-in"
+                className="p-3 rounded-lg bg-primary/5 border border-primary/20 animate-fade-in"
                 style={{ animationDelay: `${(index + 3) * 100}ms` }}
               >
-                <p className="text-sm text-water-700 dark:text-water-300">{tip}</p>
+                <p className="text-sm text-primary/90">{tip}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Environmental Impact */}
-        <div className="p-4 rounded-xl bg-gradient-to-r from-success-50 to-water-50 dark:from-success-900/20 dark:to-water-900/20 border border-success-200/50 dark:border-success-800/50">
+        <div className="p-4 rounded-xl bg-primary/5 border border-primary/20">
           <div className="flex items-center gap-3">
             <span className="text-2xl">🌍</span>
             <div>
-              <p className="font-medium text-success-700 dark:text-success-400">Monthly Impact</p>
-              <p className="text-sm text-success-600 dark:text-success-500">
+              <p className="font-medium text-primary">Monthly Impact</p>
+              <p className="text-sm text-primary/80">
                 Saved 2,400L water • Reduced CO₂ by 3.2kg
               </p>
             </div>
@@ -108,4 +108,3 @@ export const EcoInsightsCard = () => {
     </Card>
   );
 };
-

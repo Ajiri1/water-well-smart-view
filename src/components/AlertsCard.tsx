@@ -54,26 +54,25 @@ export const AlertsCard = ({ waterLevel }: AlertsCardProps) => {
   const getAlertStyle = (type: string) => {
     switch (type) {
       case 'warning':
-        return 'border-warning-200 bg-warning-50 dark:border-warning-800 dark:bg-warning-900/20';
       case 'error':
-        return 'border-error-200 bg-error-50 dark:border-error-800 dark:bg-error-900/20';
+        return 'border-slate-600 bg-slate-800/30';
       case 'success':
-        return 'border-success-200 bg-success-50 dark:border-success-800 dark:bg-success-900/20';
+        return 'border-primary/30 bg-primary/5';
       default:
-        return 'border-water-200 bg-water-50 dark:border-water-800 dark:bg-water-900/20';
+        return 'border-primary/30 bg-primary/5';
     }
   };
 
   const getAlertBadge = (type: string) => {
     switch (type) {
       case 'warning':
-        return <Badge className="bg-warning-100 text-warning-700 border-warning-200">Warning</Badge>;
+        return <Badge variant="secondary">Warning</Badge>;
       case 'error':
-        return <Badge className="bg-error-100 text-error-700 border-error-200">Error</Badge>;
+        return <Badge variant="secondary">Error</Badge>;
       case 'success':
-        return <Badge className="bg-success-100 text-success-700 border-success-200">Success</Badge>;
+        return <Badge className="bg-primary/10 text-primary border-primary/20">Success</Badge>;
       default:
-        return <Badge className="bg-water-100 text-water-700 border-water-200">Info</Badge>;
+        return <Badge className="bg-primary/10 text-primary border-primary/20">Info</Badge>;
     }
   };
 
@@ -89,7 +88,7 @@ export const AlertsCard = ({ waterLevel }: AlertsCardProps) => {
             🔔 Alerts & Notifications
           </CardTitle>
           {activeAlerts.length > 0 && (
-            <Badge className="bg-water-100 text-water-700">
+            <Badge className="bg-primary/10 text-primary border-primary/20">
               {activeAlerts.length} Active
             </Badge>
           )}
@@ -98,7 +97,7 @@ export const AlertsCard = ({ waterLevel }: AlertsCardProps) => {
       <CardContent className="space-y-4">
         {activeAlerts.length === 0 ? (
           <div className="text-center py-8">
-            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-success-100 dark:bg-success-900/20 flex items-center justify-center">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
               <span className="text-2xl">✅</span>
             </div>
             <p className="text-muted-foreground">No active alerts</p>
@@ -134,10 +133,10 @@ export const AlertsCard = ({ waterLevel }: AlertsCardProps) => {
         )}
 
         {/* Quick Alert Settings */}
-        <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+        <div className="pt-4 border-t border-slate-700">
           <div className="flex items-center justify-between text-sm">
             <span className="text-muted-foreground">Alert Preferences</span>
-            <Button variant="ghost" size="sm" className="text-water-600 hover:text-water-700">
+            <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80">
               Configure
             </Button>
           </div>
@@ -146,4 +145,3 @@ export const AlertsCard = ({ waterLevel }: AlertsCardProps) => {
     </Card>
   );
 };
-
