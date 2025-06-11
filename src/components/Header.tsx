@@ -1,18 +1,15 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Moon, Sun, Settings, Bell } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export const Header = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const { toast } = useToast();
 
   const toggleTheme = () => {
     setIsDark(!isDark);
-    document.documentElement.classList.toggle('dark');
     toast({
       title: `${isDark ? 'Light' : 'Dark'} mode activated`,
       description: "Theme preference saved.",
@@ -36,42 +33,11 @@ export const Header = () => {
           <Bell className="h-5 w-5" />
         </Button>
 
-        {/* Theme Toggle */}
-        <Button variant="ghost" size="icon" onClick={toggleTheme} className="glass-card">
-          {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+        {/* Settings */}
+        <Button variant="ghost" size="icon" className="glass-card">
+          <Settings className="h-5 w-5" />
         </Button>
-
-        {/* User Menu */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="relative h-10 w-10 rounded-full glass-card">
-              <Avatar className="h-9 w-9">
-                <AvatarImage src="/placeholder.svg" alt="User" />
-                <AvatarFallback className="bg-water-500 text-white">JD</AvatarFallback>
-              </Avatar>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56 glass-card" align="end" forceMount>
-            <DropdownMenuLabel className="font-normal">
-              <div className="flex flex-col space-y-1">
-                <p className="text-sm font-medium leading-none">John Doe</p>
-                <p className="text-xs leading-none text-muted-foreground">
-                  john@example.com
-                </p>
-              </div>
-            </DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <Settings className="mr-2 h-4 w-4" />
-              <span>Settings</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <span>Sign out</span>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
       </div>
     </header>
   );
 };
-
